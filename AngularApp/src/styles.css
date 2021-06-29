@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+.jumbotron{
+    background-color:darkcyan;
+}
+.jumbotron.h1{
+  color: white
+}
+.form-group label {
+    color: grey;
+  }
+.form-group input {
+    font-weight: 500;
+  }
+.form-group input.invalid {
+    border-color: red;
+  }
+.form-group label[type="text-danger"]{
+  color: red;
+}

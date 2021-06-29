@@ -1,0 +1,38 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center text-white" >User registration</h1>
+</div>
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <form [formGroup]="registrationForm" (submit)="onSubmit()" autocomplete="off">
+        <div class="form-group required">
+            <label for="inputUserName">USER NAME</label>
+            <input class="form-control" type ="text" formControlName="userName" id="inputUserName" [class.invalid]="userName.invalid && (userName.dirty || userName.touched)">
+        </div>
+        <div class="form-group required">
+            <label for="inputUserEmail">USER EMAIL</label>
+            <input class="form-control" type ="text" formControlName="userEmail" id="inputUserEmail" [class.invalid]="userEmail.invalid && (userEmail.dirty || userEmail.touched)" >
+        </div>
+        <div class="form-group required">
+            <label for="inputFullName">FULL NAME</label>
+            <input class="form-control" type ="text" formControlName="fullName" id="inputFullName" [class.invalid]="fullName.invalid && (fullName.dirty || fullName.touched)" >
+        </div>
+        <div formGroupName="passwords">
+            <div class="form-group ">
+                <label for="inputPassword">PASSWORD</label>
+                <input class="form-control" type ="password" formControlName="password" id="inputPassword" aria-describedby="passwordHelp" [class.invalid]="registrationForm.get('passwords.password')!.invalid && registrationForm.get('passwords.password')!.touched" >
+                <small id="passwordHelp" class="form-text text-muted">Your password must be 6-20 characters long.</small>
+            </div>
+            <div class="form-group ">
+                <label for="inputConfirmPassword">CONFIRM PASSWORD</label>
+                <input class="form-control" type ="password" formControlName="confirmPassword" id="inputConfirmPassword" [class.invalid]="registrationForm.get('passwords.confirmPassword')!.invalid && registrationForm.get('passwords.confirmPassword')!.touched">
+                <label type="text-danger" *ngIf="registrationForm.controls.passwords.errors?.match && (registrationForm.controls.passwords.dirty || registrationForm.controls.passwords.touched)">Confirm Password does not match.</label>
+            </div>
+        </div>
+        <div class="d-grid p-3 col-6 mx-auto">
+            <button type="submit" class="btn btn-dark btn-lg" [disabled]="registrationForm.invalid" >Submit</button>
+        </div>
+        </form> 
+    </div>
+    <div class="col"></div>   
+</div>
